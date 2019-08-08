@@ -36,13 +36,13 @@ public class ConfirmacionController {
 	@PostMapping("")
 	public int add(@RequestBody(required = true)Confirmacion con){
 		confirmacion.save(con);
-		return (int) con.getActadeconfirmacion();
+		return (int) con.getConfirmacion();
 	}
 	
 	@PutMapping("/{actadeconfirmacion}")
 	public int update(@RequestBody (required = true) Confirmacion conf) {
 		confirmacion.save(conf);
-		return (int) conf.getActadeconfirmacion();
+		return (int) conf.getConfirmacion();
 	}
 	
 	@DeleteMapping("/{actadeconfirmacion}")

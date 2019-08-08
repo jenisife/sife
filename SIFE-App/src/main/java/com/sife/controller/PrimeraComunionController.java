@@ -36,13 +36,13 @@ public class PrimeraComunionController {
 	@PostMapping("")
 	public int add(@RequestBody(required = true)PrimeraComunion pri){
 		comunion.save(pri);
-		return (int) pri.getActaprimeracomunion();
+		return (int) pri.getActacomunion();
 	}
 	
 	@PutMapping("/{actaprimeracomunion}")
 	public int update(@RequestBody (required = true) PrimeraComunion prim) {
 		comunion.save(prim);
-		return (int) prim.getActaprimeracomunion();
+		return (int) prim.getActacomunion();
 	}
 	
 	@DeleteMapping("/{actaprimeracomunion}")

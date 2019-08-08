@@ -14,7 +14,6 @@ public interface IConfirmacionService {
 	
 	public void delete(Long id);
 
-	public Optional<Confirmacion> findByI(Long id);
+	public Optional<Confirmacion> findById(Long id);
 
-	public Optional<Confirmacion> findById(Long actadeconfirmacion);
 }

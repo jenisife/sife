@@ -2,7 +2,13 @@ package com.sife.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +18,30 @@ import lombok.Setter;
 @Table(name="confirmacion")
 @Getter @Setter @NoArgsConstructor
 public class Confirmacion {
-
-	@Column(name="actadeconfirmacion")
-	private long actadeconfirmacion;
+	
+	@Id
+	@Column(name="actaconfirmacion")
+	private long confirmacion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="parroquia", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Parroquia parroquia;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="bautismo", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Parroquia febautismo;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="usuario", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Usuario id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="comunion", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private PrimeraComunion actacomunion;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -31,20 +58,17 @@ public class Confirmacion {
 	@Column(name="fechanacimiento")
 	private String fechanacimiento;
 	
-	@Column(name="nombredelpadre")
-	private String nombredelpadre;
+	@Column(name="nombrepadre")
+	private String nombrepadre;
 	
-	@Column(name="nombredelamadre")
-	private String nombredelamadre;
+	@Column(name="nombreamadre")
+	private String nombreamadre;
 	
 	@Column(name="padrino")
 	private String padrino;
 	
 	@Column(name="madrina")
 	private String madrina;
-	
-	@Column(name="nombreparroquia")
-	private String nombreparroquia;
 	
 	@Column(name="presbitero")
 	private String presbitero;
@@ -54,13 +78,8 @@ public class Confirmacion {
 	
 	@Column(name="fechasacramento")
 	private String fechasacramento;
-	
-	@Column(name="fedebautismo")
-	private long fedebautismo;
-	
+		
 	@Column(name="actaprimeracomunion")
 	private long actaprimeracomunion;
 	
-	@Column(name="idusuario")
-	private String idusuario;	
 }

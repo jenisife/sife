@@ -2,11 +2,16 @@ package com.sife.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +24,14 @@ public class Matrimonio {
 
 	@Id
 	@Column(name="idmatrimonio")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="matrimonio_seq")
-	@SequenceGenerator(name="matrimonio_Seq", sequenceName="incremento")
-	private long id;
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="matrimonio_seq")
+	//@SequenceGenerator(name="matrimonio_Seq", sequenceName="incremento")
+	private long matrimonio;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="usuario", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Usuario id;
 	
 	@Column(name="nombreesposo")
 	private String nombreesposo;
@@ -86,6 +96,4 @@ public class Matrimonio {
 	@Column(name="actamatrimonioreligioso")
 	private long actamatrimonioreligioso;
 	
-	@Column(name="idusuario")
-	private long idusuario;
 }

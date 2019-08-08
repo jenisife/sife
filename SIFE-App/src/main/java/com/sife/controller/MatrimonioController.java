@@ -36,13 +36,13 @@ public class MatrimonioController {
 	@PostMapping("")
 	public int add(@RequestBody(required = true)Matrimonio mat){
 		matrimonio.save(mat);
-		return (int) mat.getId();
+		return (int) mat.getMatrimonio();
 	}
 	
 	@PutMapping("/{fedebautismo}")
 	public int update(@RequestBody (required = true) Matrimonio matr) {
 		matrimonio.save(matr);
-		return (int) matr.getId();
+		return (int) matr.getMatrimonio();
 	}
 	
 	@DeleteMapping("/{id}")

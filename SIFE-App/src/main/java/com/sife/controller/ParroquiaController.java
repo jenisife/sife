@@ -36,13 +36,13 @@ public class ParroquiaController {
 	@PostMapping("")
 	public String add(@RequestBody(required = true)Parroquia par){
 		parroquia.save(par);
-		return (String) par.getNombreparroquia();
+		return (String) par.getParroquia();
 	}
 	
 	@PutMapping("/{nombreparroquia}")
 	public String update(@RequestBody (required = true) Parroquia parr) {
 		parroquia.save(parr);
-		return (String) parr.getNombreparroquia();
+		return (String) parr.getParroquia();
 	}
 	
 	@DeleteMapping("/{nombreparroquia}")

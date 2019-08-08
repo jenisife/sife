@@ -18,7 +18,7 @@ public class Parroquia {
 	
 	@Id
 	@Column(name="nombreparroquia")
-	private String nombreparroquia;
+	private String parroquia;
 	
 	@Column(name="departamento")
 	private String departamento;

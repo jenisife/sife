@@ -36,13 +36,13 @@ public class UsuarioController {
 	@PostMapping("")
 	public int add(@RequestBody(required = true)Usuario usu){
 		usuario.save(usu);
-		return (int) usu.getIdusuario();
+		return (int) usu.getId();
 	}
 	
 	@PutMapping("/{id}")
 	public int update(@RequestBody (required = true) Usuario usua) {
 		usuario.save(usua);
-		return (int) usua.getIdusuario();
+		return (int) usua.getId();
 	}
 	
 	@DeleteMapping("/{id}")

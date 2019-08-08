@@ -42,7 +42,7 @@ public class BautismoController {
     public int add(@RequestBody(required = true)Bautismo baut){
        bautismo.save(baut);
      //  categoria.flush();
-       return (int) baut.getFedebautismo();
+       return (int) baut.getFebautismo();
     }
 	
 	//@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
@@ -50,7 +50,7 @@ public class BautismoController {
     public int update(@RequestBody (required = true)Bautismo baut){
         bautismo.save(baut);
         //categoria.flush();
-        return (int) baut.getFedebautismo();
+        return (int) baut.getFebautismo();
     }
 	
 	//@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )

@@ -16,7 +16,7 @@ public class Usuario {
 
 	@Id
 	@Column(name="idusuario")
-	private long idusuario;
+	private long id;
 	
 	@Column(name="nombre")
 	private String nombre;

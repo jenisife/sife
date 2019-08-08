@@ -2,8 +2,13 @@ package com.sife.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +20,21 @@ import lombok.Setter;
 public class Bautismo {
 
 	@Id
-	@Column(name="Fedebautismo")
-	private long fedebautismo;
+	@Column(name="febautismo")
+	private long febautismo;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="usuario", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Usuario id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="parroquia", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Parroquia parroquia;
+	
+	@Column(name="nombre")
+	private String nombre;
 	
 	@Column(name="apellido")
 	private String apellido;
@@ -27,8 +45,6 @@ public class Bautismo {
 	@Column(name="fechasacramento")
 	private String fechasacramento;
 	
-	@Column(name="idusuario")
-	private long idusuario;
 	
 	@Column(name="lugarnacimiento")
 	private String lugarnacimiento;
@@ -36,20 +52,17 @@ public class Bautismo {
 	@Column(name="madrina")
 	private String madrina;
 	
-	@Column(name="nombre")
-	private String nombre;
 	
-	@Column(name="nombredelamadre")
-	private String nombredelamadre;
 	
-	@Column(name="nombredelpadre")
-	private String nombredelpadre;
+	@Column(name="nombremadre")
+	private String nombremadre;
 	
-	@Column(name="nombreparroquia")
-	private String nombreparroquia;
+	@Column(name="nombrepadre")
+	private String nombrepadre;
 	
-	@Column(name="numpartidanacimiento")
-	private long numpartidanacimiento;
+	
+	@Column(name="partidanacimiento")
+	private long partidanacimiento;
 	
 	@Column(name="padrino")
 	private String padrino;

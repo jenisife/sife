@@ -2,7 +2,13 @@ package com.sife.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +18,25 @@ import lombok.Setter;
 @Table(name="primeracomunion")
 @Getter @Setter @NoArgsConstructor
 public class PrimeraComunion {
-
-	@Column(name="actaprimeracomunion")
-	private long actaprimeracomunion;
+	
+	@Id
+	@Column(name="actacomunion")
+	private long actacomunion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="usuario", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Usuario id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="actaconfirmacion", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Confirmacion confirmacion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="parroquia", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Parroquia parroquia;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -31,11 +53,11 @@ public class PrimeraComunion {
 	@Column(name="fechanacimiento")
 	private String fechanacimiento;
 	
-	@Column(name="nombredelpadre")
-	private String nombredelpadre;
+	@Column(name="nombrepadre")
+	private String nombrepadre;
 	
-	@Column(name="nombredelamadre")
-	private String nombredelamadre;
+	@Column(name="nombreamadre")
+	private String nombreamadre;
 	
 	@Column(name="padrino")
 	private String padrino;
@@ -43,21 +65,11 @@ public class PrimeraComunion {
 	@Column(name="madrina")
 	private String madrina;
 	
-	@Column(name="nombreparroquia")
-	private String nombreparroquia;
-	
 	@Column(name="presbitero")
 	private String presbitero;
 
 	@Column(name="fechasacramento")
 	private String fechasacramento;
 	
-	@Column(name="fedebautismo")
-	private long fedebautismo;
 	
-	@Column(name="actadeconfirmacion")
-	private long actadeconfirmacion;
-	
-	@Column(name="idusuario")
-	private long idusuario;
 }
